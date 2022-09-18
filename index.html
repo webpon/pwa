@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- 引入manifest.json -->
+    <link rel="manifest" href="./manifest.json" />
+    <script>
+        // serviceWorker
+        // 检查serviceWorker属性是否可用
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function () {
+                navigator.serviceWorker
+                    .register("./serviceWorker.js")
+                    .then(res => console.log("service worker registered"))
+                    .catch(err => console.log("service worker not registered", err));
+            })
+        }
+    </script>
+</head>
+
+<body>
+    测试
+    <script>
+        var deferredPrompt = null;
+
+        // 判断用户是否安装此应用：beforeinstallprompt,如果用户已经安装过了,那么该事件不会再次触发
+        // 需要卸载，然后重新打开浏览器才能再次触发
+        window.addEventListener("beforeinstallprompt", e => {
+            e.preventDefault();
+            deferredPrompt = e;
+        });
+
+        // 安装完成后触发,即点击安装弹窗中的“安装”后被触发
+        window.addEventListener("appinstalled", () => {
+            deferredPrompt = null;
+        });
+
+
+        function addToDesktop() {
+            // 调用prompt()方法触发安装弹窗
+            deferredPrompt.prompt();
+            deferredPrompt = null;
+        }
+    </script>
+
+    <button onclick="addToDesktop()">点击安装</button>
+</body>
+
+</html>

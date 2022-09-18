@@ -1,0 +1,27 @@
+{
+    "name": "完整名称", // 用于安装横幅、启动画面显示
+    "short_name": "名称缩写", // 不为空时,桌面icon的名称优先为short_name
+    "theme_color": "#f85758", // 主题色
+    "background_color": "#f85758", // 背景色
+    "display": "standalone", // 启动过渡动画, standalone或fullscreen
+    "scope": "/",
+    "start_url": "/", //启动页面,如果首页是https://www.abc.com/,则直接用“/”即可。
+    "icons": [
+      {
+        "src": "https://webpon-img.oss-cn-guangzhou.aliyuncs.com/imgpanda-icon-128.jpeg",
+        "type": "image/png",
+        "sizes": "72x72"
+      },
+      {
+        "src": "https://webpon-img.oss-cn-guangzhou.aliyuncs.com/imgpanda-icon-128.jpeg",
+        "type": "image/png",
+        "sizes": "96x96"
+      },
+      {
+        "src": "https://webpon-img.oss-cn-guangzhou.aliyuncs.com/imgpanda-icon-128.jpeg",
+        "type": "image/png",
+        "sizes": "144x144"
+      }
+    ]
+  }
+  
